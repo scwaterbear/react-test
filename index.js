@@ -3,10 +3,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 
 class Square extends React.Component {
+  constructor(props) { // need a constructor to init 9 different Squares to hold their own state. If stateless, no need constructor?
+    super(props); // all react components that have a constructor should start with a super(props) call
+    this.state = { // is this some kind of hashmap?
+      value: null,  // values can be viewed in browser using React DevTools>Components
+    };
+  }
+
   render() {
     return (
-      <button className="square">
-        {/* TODO */}
+      <button className="square"
+      onClick={() => this.setState({value: 'X'})}
+      >
+        {this.state.value}
       </button>
     );
   }
@@ -14,7 +23,7 @@ class Square extends React.Component {
 
 class Board extends React.Component {
   renderSquare(i) {
-    return <Square />;
+    return <Square value={i}/>;
   }
 
   render() {
@@ -63,5 +72,3 @@ class Game extends React.Component {
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Game />);
-
-
