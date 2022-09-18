@@ -3,27 +3,42 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 
 class Square extends React.Component {
-  constructor(props) { // need a constructor to init 9 different Squares to hold their own state. If stateless, no need constructor?
-    super(props); // all react components that have a constructor should start with a super(props) call
-    this.state = { // is this some kind of hashmap?
-      value: null,  // values can be viewed in browser using React DevTools>Components
-    };
-  }
-
   render() {
     return (
       <button className="square"
-      onClick={() => this.setState({value: 'X'})}
+        onClick={() => this.props.onClick()}
       >
-        {this.state.value}
+        {this.props.value}
       </button>
     );
   }
 }
 
 class Board extends React.Component {
+  // To collect data from multiple children, or to have two child components communicate with each other,
+  // you need to declare the shared state in their parent component instead.
+  // The parent component can pass the state back down to the children by using props;
+  // this keeps the child components in sync with each other and with the parent component.
+  constructor(props) {
+    super(props);
+    this.state = {
+      squares: Array(9).fill(null),
+    };
+  }
+
+  handleClick(i) {
+    const squares = this.state.squares.slice();
+    squares[i] = 'X';
+    this.setState({squares: squares});
+  }
+
   renderSquare(i) {
-    return <Square value={i}/>;
+    return (
+      <Square
+        value={this.state.squares[i]}
+        onClick={() => this.handleClick(i)}
+      />
+    );
   }
 
   render() {
