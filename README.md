@@ -1,3 +1,7 @@
+# Weekly log
+11/09/2022 complete setup for tutorial + overview
+18/09/2022 lift state up, function components
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
