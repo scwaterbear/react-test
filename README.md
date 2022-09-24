@@ -1,6 +1,7 @@
 # Weekly log
-11/09/2022 complete setup for tutorial + overview
-18/09/2022 lift state up, function components
+11/09/2022 complete setup for tutorial + overview\
+18/09/2022 lift state up, function components\
+24/09/2022 Adding time travel
 
 # Getting Started with Create React App
 
